@@ -1,0 +1,18 @@
+# Core scientific packages
+numpy
+scipy
+matplotlib
+h5py
+
+# XAS analysis
+larch
+
+# XRD analysis
+binoculars
+
+# Utilities (used by lib/binUtil3.py and lib/util/utilities3.py)
+natsort
+lmfit
+trimesh
+scikit-image
+imageio
