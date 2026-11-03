@@ -12,7 +12,7 @@ import os
 import numpy as np
 import h5py
 
-from lib.util import utilities3 as ut3
+from sixs_tools import utilities3 as ut3
 from matplotlib.colors import LogNorm
 
 import trimesh

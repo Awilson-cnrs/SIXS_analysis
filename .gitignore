@@ -4,8 +4,11 @@ __pycache__/
 *$py.class
 *.so
 
-# Virtual environment
+# Virtual environments
+.venv/
 venv/
+env/
+.conda/
 
 # Jupyter
 .ipynb_checkpoints/
@@ -14,3 +17,13 @@ venv/
 .idea/
 *.swp
 *.swo
+
+# Data (fichiers locaux, ignorés par git)
+data/
+
+# Junie session files
+.junie/
+
+# OS files
+.DS_Store
+Thumbs.db

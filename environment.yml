@@ -1,0 +1,46 @@
+# Environnement conda partagé pour les projets de data science
+#
+# Pour créer l'environnement :
+#   conda env create -f environment.yml
+#
+# Pour activer l'environnement :
+#   conda activate datascience
+#
+# Pour mettre à jour l'environnement après modification de ce fichier :
+#   conda env update -f environment.yml
+
+name: datascience
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python
+  - python>=3.10
+
+  # Core scientific packages
+  - numpy
+  - scipy
+  - matplotlib
+  - h5py
+  - pandas
+
+  # XAS analysis
+  - larch
+
+  # XRD analysis
+  - binoculars
+
+  # Utilities
+  - natsort
+  - lmfit
+  - trimesh
+  - scikit-image
+  - imageio
+
+  # Jupyter
+  - jupyterlab
+  - ipykernel
+
+  # Machine learning (optionnel, utile pour l'analyse)
+  - scikit-learn
