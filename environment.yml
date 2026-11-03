@@ -28,9 +28,6 @@ dependencies:
   # XAS analysis
   - larch
 
-  # XRD analysis
-  - binoculars
-
   # Utilities
   - natsort
   - lmfit
@@ -44,3 +41,4 @@ dependencies:
 
   # Machine learning (optionnel, utile pour l'analyse)
   - scikit-learn
+
