@@ -1,96 +1,178 @@
 # SIXS Analysis
 
-Outils d'analyse des données de diffusion des rayons X en petite angle (SIXS/SAXS) et de diffraction (XRD/XAS) pour les expériences de catalyse in situ.
+Tools for analyzing small-angle X-ray scattering (SIXS/SAXS), X-ray absorption (XAS), and X-ray diffraction (XRD) data from in situ catalysis experiments.
 
-Ce projet fournit des notebooks Jupyter pour lire, traiter et visualiser les fichiers NeXus/HDF5 générés par les expériences SIXS au Soleil.
+This project provides Jupyter notebooks to read, process, and visualize NeXus/HDF5 files generated at SIXS beamlines.
 
 ---
 
-## Structure du projet
+## Project structure
 
 ```
 SIXS_analysis/
-├── notebooks/           # Notebooks Jupyter pour l'analyse
-│   ├── xas_sample*.ipynb    # Analyse XAS (absorption)
-│   ├── xrd_sample*.ipynb    # Analyse XRD (diffraction)
-│   └── plot_*.ipynb         # Scripts de visualisation
-├── sixs_tools/          # Package Python avec les outils de lecture
-│   ├── read_nxs5.py     # Lecteur de fichiers NeXus HDF5
-│   ├── bin_util.py      # Outils de binning et traitement d'image
-│   └── utilities.py     # Fonctions utilitaires diverses
-├── data/                # Données locales (ignoré par git)
-├── environment.yml      # Dépendances conda
-└── main.py              # Point d'entrée (script de test)
+├── notebooks/           # Jupyter notebooks for analysis
+│   ├── xas_sample*.ipynb    # XAS (absorption) analysis
+│   ├── xrd_sample*.ipynb    # XRD (diffraction) analysis
+│   └── plot_*.ipynb         # Visualization scripts
+├── sixs_tools/          # Python package for reading NeXus files
+│   ├── read_nxs5.py     # NeXus HDF5 file reader
+│   ├── bin_util.py      # Binning and image processing tools
+│   ├── utilities.py     # General utility functions
+│   └── alias_dict.txt   # Alias dictionary for NeXus files
+├── data/                # Local data (ignored by git)
+├── environment.yml      # Conda dependencies
+├── pyproject.toml       # Package metadata (for editable install)
+├── setup.bat            # One-click setup script (Windows)
+├── setup.sh             # One-click setup script (macOS / Linux)
+└── main.py              # Entry point script
 ```
 
-## Installation
+## Quick start
 
-### 1. Cloner le dépôt
+### Prerequisites
+
+- **Git** — to clone the repository.
+- **Miniconda** or **Anaconda** — to manage the Python environment. Download from https://docs.conda.io/en/latest/miniconda.html.
+
+### 1. Clone the repository
 
 ```bash
-git clone <url-du-repo>
+git clone https://github.com/Awilson-cnrs/SIXS_analysis.git
 cd SIXS_analysis
 ```
 
-### 2. Configurer l'environnement conda
+### 2. Run the setup script
 
-Ce projet utilise un environnement conda partagé nommé `datascience`.
+The setup script creates the conda environment, installs all dependencies, registers the Jupyter kernel, and configures environment variables to avoid package conflicts.
+
+**Windows:**
+```bash
+setup.bat
+```
+
+**macOS / Linux:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+> **Note:** After the script finishes, **restart your terminal and PyCharm** so the `PYTHONNOUSERSITE` environment variable takes effect.
+
+### 3. Configure PyCharm
+
+1. **Set the project interpreter**:
+   - **Settings → Project → Python Interpreter** → gear icon ⚙️ → **Add...**
+   - Choose **Conda Environment → Existing environment**.
+   - Point to the conda Python executable:
+     ```
+     # Windows
+     %USERPROFILE%\anaconda3\envs\datascience\python.exe
+     # or miniconda3 instead of anaconda3
+
+     # macOS / Linux
+     ~/anaconda3/envs/datascience/bin/python
+     ```
+   - Click **OK**.
+
+2. **Open a notebook** and verify the kernel in the top-right corner shows **Python (datascience)**.
+
+### 4. (Optional) Launch Jupyter Lab from the terminal
 
 ```bash
-# Créer l'environnement à partir du fichier environment.yml
+conda activate datascience
+jupyter lab
+```
+
+Then open a notebook from `notebooks/` and select the **Python (datascience)** kernel.
+
+---
+
+### Manual installation (alternative)
+
+If the setup script doesn't work for your system, follow these steps manually:
+
+```bash
+# 1. Create the conda environment
 conda env create -f environment.yml
 
-# Activer l'environnement
+# 2. Activate and install the package
 conda activate datascience
-```
+pip install -e .
 
-Si l'environnement `datascience` existe déjà sur votre machine, mettez-le à jour :
-
-```bash
-conda env update -f environment.yml
-```
-
-### 3. Installer le kernel Jupyter (une seule fois)
-
-```bash
-conda activate datascience
+# 3. Register the Jupyter kernel
 python -m ipykernel install --user --name datascience --display-name "Python (datascience)"
+
+# 4. Prevent user site-packages from shadowing the conda environment
+# Windows (PowerShell):
+[System.Environment]::SetEnvironmentVariable("PYTHONNOUSERSITE", "1", "User")
+# macOS / Linux:
+echo 'export PYTHONNOUSERSITE=1' >> ~/.bashrc
 ```
 
-## Utilisation
+## Usage
 
-### Lancer les notebooks
-
-1. Activez l'environnement conda :
-   ```bash
-   conda activate datascience
-   ```
-
-2. Lancez Jupyter Lab :
-   ```bash
-   jupyter lab
-   ```
-
-3. Ouvrez un notebook dans le dossier `notebooks/` et sélectionnez le kernel **Python (datascience)**.
-
-### Importer les outils dans un notebook
+### Import tools in a notebook
 
 ```python
 from sixs_tools import read_nxs5 as rn5
 from sixs_tools import bin_util as bu3
-from sixs_tools import utilities3 as ut3
+from sixs_tools import utilities as ut3
 ```
 
-## Dépendances
+### Data files
 
-Les dépendances sont gérées par `environment.yml`. Pour ajouter un paquet :
+The notebooks expect `.nxs` data files in a specific directory structure. Place your data files in the `data/` folder or update the paths in the notebooks to point to your data location.
 
+## Troubleshooting
+
+### "ModuleNotFoundError: No module named 'sixs_tools'"
+
+Make sure you installed the package in editable mode:
 ```bash
 conda activate datascience
-conda install <paquet>
+pip install -e .
+```
+
+### "ImportError: cannot import name 'Group' from 'larch'"
+
+The wrong `larch` package is installed (a statistics library, not the XAS one). Fix it:
+```bash
+conda activate datascience
+pip uninstall larch -y
+pip install xraylarch
+```
+
+### Notebooks use the wrong Python kernel
+
+In PyCharm, click the kernel name in the top-right corner of the notebook editor and select **Python (datascience)**. If it doesn't appear, verify the project interpreter is set to the `datascience` conda environment (Settings → Project → Python Interpreter).
+
+### "HDF5 error: bad symbol table node signature"
+
+The `.nxs` file is corrupted, likely from an incomplete cloud sync (Nextcloud, Dropbox, etc.). Re-download the file from the original source.
+
+### Packages installed but not found in notebooks
+
+Your user site-packages may shadow the conda environment. Set this environment variable:
+```bash
+# Windows (PowerShell)
+[System.Environment]::SetEnvironmentVariable("PYTHONNOUSERSITE", "1", "User")
+
+# macOS/Linux
+echo 'export PYTHONNOUSERSITE=1' >> ~/.bashrc
+```
+Then restart PyCharm.
+
+## Dependencies
+
+Managed by `environment.yml` (conda) and `pyproject.toml` (pip editable install).
+
+To add a new package:
+```bash
+conda activate datascience
+conda install <package>
 conda env export -n datascience > environment.yml
 ```
 
-## Licence
+## License
 
-Ce projet est issu d'un fork de [AndreaResta/sixs_readnxs](https://codeberg.org/AndreaResta/sixs_readnxs).
+This project is forked from [AndreaResta/sixs_readnxs](https://codeberg.org/AndreaResta/sixs_readnxs).

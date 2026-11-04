@@ -15,8 +15,8 @@ channels:
   - defaults
 
 dependencies:
-  # Python
-  - python>=3.10
+  # Python — pinned to 3.12 for compatibility with xraylarch and HDF5 1.14+
+  - python=3.12
 
   # Core scientific packages
   - numpy

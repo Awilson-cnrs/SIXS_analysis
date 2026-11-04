@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sixs-tools"
+version = "0.1.0"
+description = "Tools for reading and analyzing NeXus HDF5 files from SIXS/SAXS experiments"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "h5py",
+    "pandas",
+    "xraylarch",
+    "natsort",
+    "lmfit",
+    "trimesh",
+    "scikit-image",
+    "imageio",
+    "scikit-learn",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyterlab",
+    "ipykernel",
+]
+
+[tool.setuptools.packages.find]
+include = ["sixs_tools*"]
+
+[tool.setuptools.package-data]
+sixs_tools = ["*.txt"]
