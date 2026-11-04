@@ -1,8 +1,8 @@
 # SIXS Analysis
 
-Tools for analyzing small-angle X-ray scattering (SIXS/SAXS), X-ray absorption (XAS), and X-ray diffraction (XRD) data from in situ catalysis experiments.
+Tools for analyzing X-ray absorption (XAS) and X-ray diffraction (XRD) data from surface diffraction experiments at the SOLEIL synchrotron.
 
-This project provides Jupyter notebooks to read, process, and visualize NeXus/HDF5 files generated at SIXS beamlines.
+This project provides Jupyter notebooks to read, process, and visualize NeXus/HDF5 files generated at SOLEIL beamlines.
 
 ---
 
@@ -203,4 +203,4 @@ conda env export -n datascience > environment.yml
 
 ## License
 
-This project is forked from [AndreaResta/sixs_readnxs](https://codeberg.org/AndreaResta/sixs_readnxs).
+This project is forked from [AndreaResta/sixs_readnxs](https://codeberg.org/AndreaResta/sixs_readnxs). Data was collected at the SOLEIL synchrotron (surface diffraction beamline).

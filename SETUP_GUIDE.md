@@ -8,7 +8,7 @@
 
 ## 1. Project Overview
 
-- **Type:** Data science project for SIXS (Specular Inelastic X-ray Scattering) analysis.
+- **Type:** Data science project for XAS and XRD analysis from surface diffraction experiments at the SOLEIL synchrotron.
 - **Origin:** Forked from `AndreaResta/sixs_readnxs` on Codeberg, then heavily refactored.
 - **Host:** GitHub repository `Awilson-cnrs/SIXS_analysis` (branch `main`).
 - **Code:** Python package `sixs_tools/` + Jupyter notebooks in `notebooks/`.
