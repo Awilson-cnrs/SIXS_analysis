@@ -9,6 +9,7 @@
 ## 1. Project Overview
 
 - **Type:** Data science project for XAS and XRD analysis from surface diffraction experiments at the SOLEIL synchrotron.
+- **Experimental approach:** The beamline is designed for fixed-energy surface diffraction, not energy scanning. "Braggap" scans simultaneously control the undulator gap and Bragg angle to track the harmonic and maintain intensity while scanning energy. XAS signals are extracted from the **background noise of the XPAD diffraction detector** instead of a fluorescence detector — the increase in background scattering at an absorption edge serves as the absorption signal.
 - **Origin:** Forked from `AndreaResta/sixs_readnxs` on Codeberg, then heavily refactored.
 - **Host:** GitHub repository `Awilson-cnrs/SIXS_analysis` (branch `main`).
 - **Code:** Python package `sixs_tools/` + Jupyter notebooks in `notebooks/`.

@@ -1,8 +1,10 @@
 # SIXS Analysis
 
-Tools for analyzing X-ray absorption (XAS) and X-ray diffraction (XRD) data from surface diffraction experiments at the SOLEIL synchrotron.
+This project analyzes X-ray absorption (XAS) and X-ray diffraction (XRD) data from **surface diffraction experiments at the SOLEIL synchrotron**.
 
-This project provides Jupyter notebooks to read, process, and visualize NeXus/HDF5 files generated at SOLEIL beamlines.
+**Experimental approach:** The beamline optics and monochromator are designed for fixed-energy surface diffraction, not energy scanning. By performing **"braggap" scans** — simultaneously controlling the undulator gap and the Bragg angle of the monochromator — the beamline harmonic is tracked to maintain intensity while scanning energy. XAS signals are extracted from the **background noise of the XPAD diffraction detector** rather than a dedicated fluorescence detector: the increase in background scattering when crossing an absorption edge serves as the absorption signal.
+
+Jupyter notebooks read, process, and visualize NeXus/HDF5 files from these experiments.
 
 ---
 
@@ -203,4 +205,4 @@ conda env export -n datascience > environment.yml
 
 ## License
 
-This project is forked from [AndreaResta/sixs_readnxs](https://codeberg.org/AndreaResta/sixs_readnxs). Data was collected at the SOLEIL synchrotron (surface diffraction beamline).
+This project is forked from [AndreaResta/sixs_readnxs](https://codeberg.org/AndreaResta/sixs_readnxs). Data was collected at the SOLEIL synchrotron on a surface diffraction beamline using braggap energy scans and XPAD background noise as the XAS absorption signal.
