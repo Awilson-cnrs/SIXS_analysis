@@ -25,8 +25,9 @@ dependencies:
   - h5py
   - pandas
 
-  # XAS analysis
-  - larch
+  # XAS analysis (install via pip: pip install xraylarch)
+  - pip:
+    - xraylarch
 
   # Utilities
   - natsort
