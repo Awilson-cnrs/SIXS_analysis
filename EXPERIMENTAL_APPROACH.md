@@ -52,12 +52,33 @@ The XPAD (pixel array detector) is designed to collect diffraction patterns. But
 
 ---
 
+## Operando Conditions
+
+### The Reactor
+
+All measurements were performed **operando** — inside a small sealed reactor that reproduced real catalysis conditions (temperature, pressure, gas flow) while the hard X-ray beam passed through it.
+
+**Why this is challenging:**
+
+- The reactor windows must be **X-ray transparent**, **gas-tight**, and **heat-resistant**.
+- The catalyst is measured **while it is working** — not before or after, but during the reaction.
+- XRD (crystal structure) and XANES (chemical state) are collected **simultaneously**, not sequentially.
+
+### The Power of Simultaneity
+
+Most operando experiments measure XRD **or** XAS. Doing both at the same time means:
+
+- If a diffraction peak appears (phase change) **and** the absorption edge shifts (oxidation state change) **at the same moment**, you know they are causally linked — not just correlated in time.
+- The non-destructive nature of hard X-rays allows observing the catalyst **in action**, without perturbing the reaction.
+
+---
+
 ## Why This Matters
 
 ### Scientific Impact
 
 - **Access to XAS without a dedicated beamline:** Opens absorption spectroscopy to experiments on beamlines where fluorescence detection is impractical or impossible.
-- **In situ catalysis:** The technique allows monitoring electronic structure changes (via XAS) during surface diffraction experiments — correlating structural and electronic information.
+- **Operando correlation:** XRD + XANES measured simultaneously inside a working catalyst reactor — linking crystal structure and chemical state in real time.
 - **Resource efficiency:** Repurposes existing infrastructure instead of requiring dedicated beamtime on an XAS line.
 
 ### Technical Innovation
@@ -69,6 +90,8 @@ The XPAD (pixel array detector) is designed to collect diffraction patterns. But
 | **Detector** | Fluorescence detector | XPAD background noise |
 | **Signal** | Fluorescence photons | Δbackground scattering |
 | **Intensity stability** | Flux correction needed | Harmonic tracking maintains intensity |
+| **Conditions** | Ex situ or in situ | **Operando** — inside a working reactor |
+| **Correlation** | XRD **or** XAS | XRD **and** XAS simultaneously |
 
 ---
 
@@ -88,3 +111,4 @@ The XPAD (pixel array detector) is designed to collect diffraction patterns. But
 - **Highlight the hack:** "We turned the diffraction detector's background noise into an absorption signal."
 - **Emphasize the synchronization:** "Braggap scans keep intensity constant — no flux correction needed."
 - **Connect to the science:** "This lets us monitor electronic structure changes during surface diffraction experiments."
+- **The operando advantage:** "All of this was done inside a working catalyst reactor — XRD and XANES measured simultaneously, non-destructively, while the reaction was running."

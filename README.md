@@ -1,8 +1,10 @@
 # SIXS Analysis
 
-This project analyzes X-ray absorption (XAS) and X-ray diffraction (XRD) data from **surface diffraction experiments at the SOLEIL synchrotron**.
+This project analyzes X-ray absorption (XAS) and X-ray diffraction (XRD) data from **operando surface diffraction experiments at the SOLEIL synchrotron**.
 
-**Experimental approach:** The beamline optics and monochromator are designed for fixed-energy surface diffraction, not energy scanning. By performing **"braggap" scans** — simultaneously controlling the undulator gap and the Bragg angle of the monochromator — the beamline harmonic is tracked to maintain intensity while scanning energy. XAS signals are extracted from the **background noise of the XPAD diffraction detector** rather than a dedicated fluorescence detector: the increase in background scattering when crossing an absorption edge serves as the absorption signal.
+**Experimental approach:** All measurements were performed **operando** — inside a sealed reactor reproducing real catalysis conditions (temperature, pressure, gas flow) — with hard X-rays passing through non-destructively. XRD (crystal structure) and XANES (chemical state) were collected **simultaneously**, linking structural and electronic changes in real time.
+
+The beamline optics and monochromator are designed for fixed-energy surface diffraction, not energy scanning. By performing **"braggap" scans** — simultaneously controlling the undulator gap and the Bragg angle of the monochromator — the beamline harmonic is tracked to maintain intensity while scanning energy. XAS signals are extracted from the **background noise of the XPAD diffraction detector** rather than a dedicated fluorescence detector: the increase in background scattering when crossing an absorption edge serves as the absorption signal.
 
 Jupyter notebooks read, process, and visualize NeXus/HDF5 files from these experiments.
 
