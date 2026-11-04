@@ -10,10 +10,19 @@ This project provides Jupyter notebooks to read, process, and visualize NeXus/HD
 
 ```
 SIXS_analysis/
-├── notebooks/           # Jupyter notebooks for analysis
-│   ├── xas_sample*.ipynb    # XAS (absorption) analysis
-│   ├── xrd_sample*.ipynb    # XRD (diffraction) analysis
-│   └── plot_*.ipynb         # Visualization scripts
+├── notebooks/
+│   ├── xas/               # XAS (absorption) analysis notebooks
+│   │   ├── xas_sample1.ipynb
+│   │   ├── xas_sample2.ipynb
+│   │   ├── xas_sample3.ipynb
+│   │   ├── xas_sample4.ipynb
+│   │   ├── xas_sample8.ipynb
+│   │   └── plot_xas_v1.ipynb
+│   └── xrd/               # XRD (diffraction) analysis notebooks
+│       ├── xrd_sample2.ipynb
+│       ├── xrd_sample3.ipynb
+│       ├── xrd_sample4.ipynb
+│       └── xrd_sample8.ipynb
 ├── sixs_tools/          # Python package for reading NeXus files
 │   ├── read_nxs5.py     # NeXus HDF5 file reader
 │   ├── bin_util.py      # Binning and image processing tools
@@ -84,7 +93,7 @@ conda activate datascience
 jupyter lab
 ```
 
-Then open a notebook from `notebooks/` and select the **Python (datascience)** kernel.
+Then open a notebook from `notebooks/xas/` or `notebooks/xrd/` and select the **Python (datascience)** kernel.
 
 ---
 
