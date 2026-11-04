@@ -19,6 +19,7 @@ SIXS_analysis/
 │   ├── bin_util.py      # Binning and image processing tools
 │   ├── utilities.py     # General utility functions
 │   └── alias_dict.txt   # Alias dictionary for NeXus files
+├── config.example.json  # Template for local data paths (copy to config.json)
 ├── data/                # Local data (ignored by git)
 ├── environment.yml      # Conda dependencies
 ├── pyproject.toml       # Package metadata (for editable install)
@@ -119,9 +120,27 @@ from sixs_tools import bin_util as bu3
 from sixs_tools import utilities as ut3
 ```
 
-### Data files
+### Configure data paths
 
-The notebooks expect `.nxs` data files in a specific directory structure. Place your data files in the `data/` folder or update the paths in the notebooks to point to your data location.
+Each collaborator has their own local data directory (Nextcloud, NFS, etc.). To avoid hardcoding paths in the notebooks, create a `config.json` file:
+
+```bash
+cp config.example.json config.json
+```
+
+Then edit `config.json` with your paths:
+
+```json
+{
+    "data_root": "/path/to/your/data/",
+    "mask_path": "binoculars/mask_nxs00057_20261013_22h40.npy"
+}
+```
+
+- **`data_root`**: Root directory containing your `.nxs` data files.
+- **`mask_path`**: Relative path to the mask `.npy` file from `data_root`.
+
+The `config.json` file is ignored by git, so each collaborator keeps their own configuration without affecting others.
 
 ## Troubleshooting
 

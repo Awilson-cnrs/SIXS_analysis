@@ -27,6 +27,9 @@ env/
 # Data (fichiers locaux, ignorés par git)
 data/
 
+# Local configuration (each collaborator has their own paths)
+config.json
+
 # Junie session files
 .junie/
 
