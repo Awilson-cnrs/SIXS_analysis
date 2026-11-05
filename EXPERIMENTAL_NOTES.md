@@ -1,81 +1,81 @@
-# Notes Expérimentales — SOLEIL Surface Diffraction Beamline
+# Experimental Notes — SOLEIL Surface Diffraction Beamline
 
-## Goniomètre et paramètres géométriques
+## Goniometer and Geometric Parameters
 
-Un diffractomètre est un goniomètre. Les angles clés :
+A diffractometer is a goniometer. Key angles:
 
-| Angle | Signification | Rôle |
+| Angle | Meaning | Role |
 |---|---|---|
-| **μ (mu)** | Rotation de l'échantillon | Normalement invariant si l'échantillon est homogène sur la surface. En pratique, l'échantillon n'est pas homogène → varier μ permet d'intercepter plus d'échantillon et d'améliorer le signal. |
-| **Δ (delta)** | Cercle hors-plan | Contrôle l'angle d'incidence/émergence hors du plan de surface. |
-| **γ (gamma)** | Cercle dans le plan | Permet de faire du 2θ (angle de diffraction dans le plan). |
+| **μ (mu)** | Sample rotation | Normally invariant if the sample is homogeneous on the surface. In practice, the sample is not homogeneous → varying μ allows intercepting more sample and improving the signal. |
+| **Δ (delta)** | Out-of-plane circle | Controls the out-of-plane incidence/emergence angle. |
+| **γ (gamma)** | In-plane circle | Enables 2θ scanning (diffraction angle in the plane). |
 
 ---
 
-## White Line (WL) du XAS
+## XAS White Line (WL)
 
-La **white line** est la région du spectre XAS où le signal est le plus intense — juste au-dessus du seuil d'absorption.
+The **white line** is the region of the XAS spectrum where the signal is most intense — just above the absorption edge.
 
-**Objectif :** maximiser l'intensité du signal pour pouvoir faire le scan braggap plus rapidement.
+**Goal:** maximize signal intensity to perform the braggap scan more quickly.
 
-### Cartographies de la white line
+### White line mapping
 
-1. **WL map Δ-γ** : balayer delta et gamma pour trouver la géométrie qui maximise la white line.
-2. **WL map μ** : balayer mu pour trouver l'orientation de l'échantillon qui maximise le signal.
-3. **WL map Δ** : balayer delta seul pour affiner l'angle hors-plan.
+1. **WL map Δ-γ:** scan delta and gamma to find the geometry that maximizes the white line.
+2. **WL map μ:** scan mu to find the sample orientation that maximizes the signal.
+3. **WL map Δ:** scan delta alone to fine-tune the out-of-plane angle.
 
-Ces cartographies permettent d'optimiser la géométrie avant de lancer le scan en énergie.
-
----
-
-## Mu scan : optimisation du signal
-
-**Objectif :** trouver l'angle μ qui intercepte le maximum d'échantillon.
-
-- Varier μ et mesurer l'intensité du signal.
-- Calculer la **beam footprint** (taille du faisceau sur l'échantillon) pour comprendre quelle zone est interrogée.
-- Choisir le μ optimal pour maximiser le rapport signal/bruit.
+These maps optimize the geometry before starting the energy scan.
 
 ---
 
-## Analyse XAS : 3 parties
+## Mu scan: signal optimization
 
-L'analyse XAS se décompose en trois parties :
+**Goal:** find the μ angle that intercepts the maximum amount of sample.
+
+- Vary μ and measure signal intensity.
+- Calculate the **beam footprint** (beam size on the sample) to understand which area is interrogated.
+- Choose the optimal μ to maximize the signal-to-noise ratio.
+
+---
+
+## XAS Analysis: 3 Parts
+
+XAS analysis is divided into three parts:
 
 ### 1. XANES (X-ray Absorption Near Edge Structure)
 
-- Région proche du seuil d'absorption (±50 eV).
-- Donne l'**état d'oxydation** et la **géométrie locale** des atomes.
-- La white line est dans cette région.
+- Region near the absorption edge (±50 eV).
+- Gives the **oxidation state** and **local geometry** of atoms.
+- The white line is in this region.
 
 ### 2. EXAFS (Extended X-ray Absorption Fine Structure)
 
-- Région au-delà du seuil (+50 à +1000 eV).
-- Oscillations qui donnent les **distances interatomiques** et le **nombre de coordination**.
-- Analyse par transformée de Fourier pour extraire les shells de coordination.
+- Region beyond the edge (+50 to +1000 eV).
+- Oscillations that give **interatomic distances** and **coordination numbers**.
+- Fourier transform analysis to extract coordination shells.
 
-### 3. Normalisation et soustraction du pré-arête
+### 3. Normalization and Pre-edge Subtraction
 
-- Soustraire le pré-arête (avant le seuil).
-- Normaliser par la hauteur du saut au seuil.
-- Utiliser `larch`/`xraylarch` pour les procédures standard.
-
----
-
-## Tests complémentaires
-
-### Détecteur de fluorescence vs XPAD
-
-- **Tester un détecteur de fluorescence** pour comparer avec le signal XPAD.
-- Comparer le rapport signal/bruit, la linéarité, et la fidélité du spectre.
-- Cela validerait que le bruit de fond XPAD est un substitut fiable du détecteur de fluorescence dédié.
+- Subtract the pre-edge (before the edge).
+- Normalize by the edge jump height.
+- Use `larch`/`xraylarch` for standard procedures.
 
 ---
 
-## Résumé du workflow expérimental
+## Additional Tests
 
-1. **Cartographie WL** → trouver la géométrie optimale (Δ, γ, μ).
-2. **Mu scan** → maximiser l'interception de l'échantillon, calculer la beam footprint.
-3. **Scan braggap** → scanner en énergie en maintenant l'intensité constante.
-4. **Extraction XAS** → XANES + EXAFS depuis le bruit de fond XPAD.
-5. **Validation** → comparer avec un détecteur de fluorescence si disponible.
+### Fluorescence Detector vs XPAD
+
+- **Test a fluorescence detector** to compare with the XPAD signal.
+- Compare signal-to-noise ratio, linearity, and spectral fidelity.
+- This would validate that the XPAD background noise is a reliable substitute for a dedicated fluorescence detector.
+
+---
+
+## Experimental Workflow Summary
+
+1. **WL mapping** → find optimal geometry (Δ, γ, μ).
+2. **Mu scan** → maximize sample interception, calculate beam footprint.
+3. **Braggap scan** → scan energy while maintaining constant intensity.
+4. **XAS extraction** → XANES + EXAFS from XPAD background noise.
+5. **Validation** → compare with a fluorescence detector if available.
